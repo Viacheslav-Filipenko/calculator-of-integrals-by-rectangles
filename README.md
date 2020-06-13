@@ -1,0 +1,1 @@
+# calculator-of-integrals-by-rectangles
