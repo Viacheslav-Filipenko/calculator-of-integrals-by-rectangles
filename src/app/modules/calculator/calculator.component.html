@@ -1,0 +1,66 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Calculator for integrals using method of rectangles
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        [formGroup]="integralCalculatorForm"
+        (ngSubmit)="submit()"
+        novalidate
+        autocomplete="off"
+      >
+        <mat-form-field class="equalution-container" appearance="legacy">
+          <mat-label>Enter equalution:</mat-label>
+          <input
+            matInput
+            placeholder="Enter equalution:"
+            formControlName="equalution"
+          />
+          <mat-icon matSuffix>dx</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>From:</mat-label>
+          <input matInput placeholder="From:" formControlName="from" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>To:</mat-label>
+          <input matInput placeholder="To:" formControlName="to" />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Enter number of break intervals:</mat-label>
+          <input
+            matInput
+            placeholder="Enter number of break intervals:"
+            formControlName="intervals"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Rounding accuracy:</mat-label>
+          <input
+            matInput
+            placeholder="Rounding accuracy:"
+            formControlName="roundingAccuracy"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Method: </mat-label>
+          <mat-select [(ngModel)]="rectanglesMethods[0].value" matNativeControl formControlName="method">
+            <ng-template ngFor let-method [ngForOf]="rectanglesMethods">
+              <mat-option [value]="method.value">{{ method.title }}</mat-option>
+            </ng-template>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button>Calculate</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
